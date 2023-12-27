@@ -3,7 +3,7 @@
 Отчёты доступны по ссылкам:
 
 
-1.https://drive.google.com/file/d/1JD5WK-MjZKzYMy6n3danJXpAqu4SHcua/view?usp=sharing
+1. https://drive.google.com/file/d/1GiVWy0B5cABH1EmFgsuknsvRdi5uAEbj/view?usp=sharing
 
 # Лабораторная работа №1 - Знакомство с SPI
 # Задача
