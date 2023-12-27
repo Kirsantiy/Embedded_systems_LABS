@@ -131,7 +131,7 @@ int main(void)
 	FlappyBird_init(&FlappyBird);
 
 	HAL_GPIO_WritePin(nOE_GPIO_Port, nOE_Pin, GPIO_PIN_RESET);
-	char *pMyStr = "GAME OVER, Press Reset to continue";  //Строка на вывод
+	char *pMyStr = "GAME OVER, Press Reset to continue";  // string for input
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -150,25 +150,6 @@ int main(void)
 			Flappy_Bird(x0_bird, y0_bird, State);
 			draw_game(rectangle_x1, rectangle_x2, rectangle_y1, rectangle_y2);
 	  	  }
-//		Flappy_Bird(x0_bird, y0_bird, State);
-//
-//		draw_game(rec_x1, rec_x2, rec_y1, rec_y2);
-
-//		  disp1color_DrawLine(0, 0, 32, 0);
-//		  disp1color_DrawLine(0, 15, 32, 15);
-//		  disp1color_DrawRectangle(rec_x1, 0, rec_x2, rec_y1);
-//		  disp1color_DrawRectangle(rec_x1, rec_y2, rec_x2, 15);
-//		  disp1color_UpdateFromBuff(); //Перевод рассчитанных данных в массив
-//		  prepare_data(); //Разбиение массива на массивы под каждую строку
-//
-//		  //Включение матрицы (построчно)
-//		  for(uint8_t i=0; i<20; i++){
-//			  disp_row(0);
-//			  disp_row(1);
-//			  disp_row(2);
-//			  disp_row(3);
-//		  }
-
   }
   /* USER CODE END 3 */
 }
@@ -287,10 +268,10 @@ void draw_game(int8_t rectangle_x1, int8_t rectangle_x2, uint8_t rectangle_y1, u
 	disp1color_DrawRectangle(rectangle_x1, 0, rectangle_x2, rectangle_y1);
 	disp1color_DrawRectangle(rectangle_x1, rectangle_y2, rectangle_x2, 15);
 
-	disp1color_UpdateFromBuff(); //Перевод рассчитанных данных в массив
-	prepare_data(); //Разбиение массива на массивы под каждую строку
+	disp1color_UpdateFromBuff(); // converting calculated data into an array
+	prepare_data(); // splitting the array into arrays for each row
 
-	//Включение матрицы (построчно)
+	// Switching-on the matrix, row by row
 	for (uint8_t i = 0; i < 20; i++) {
 		disp_row(0);
 		disp_row(1);
@@ -314,12 +295,12 @@ void game_over(char *pMyStr) {
 	for (int16_t x = 32; x > -((strSize + symbolDelay) * f6x8_MONO_WIDTH);
 			x--) {
 
-		disp1color_printf(x, 4, FONTID_6X8M, pMyStr); //Расчет данных для вывода
+		disp1color_printf(x, 4, FONTID_6X8M, pMyStr); // calculation of data for output
 
-		disp1color_UpdateFromBuff(); //Перевод рассчитанных данных в массив
-		prepare_data();//Разбиение массива на массивы под каждую строку
+		disp1color_UpdateFromBuff(); // converting calculated data into an array
+		prepare_data();// splitting the array into arrays for each row
 
-		//Включение матрицы (построчно)
+		// Switching-on the matrix, row by row
 		for (uint8_t i = 0; i < 20; i++) {
 			disp_row(0);
 			disp_row(1);
@@ -327,8 +308,6 @@ void game_over(char *pMyStr) {
 			disp_row(3);
 		}
 	}
-//	disp1color_DrawString(7, 0, FONTID_6X8M, pMyStr);
-//	disp1color_DrawString(5, 8, FONTID_6X8M, pMyStr2);
 }
 /* USER CODE END 4 */
 

@@ -224,7 +224,6 @@ void SysTick_Handler(void)
 void TIM1_UP_TIM10_IRQHandler(void)
 {
   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 0 */
-	//y0_bird = FlappyBird_update(&FlappyBird, volume);
 	if (counter_wall > 0 && counter_wall < 40) {
 		rectangle_y1 = rectangle_y1_array[counter_mode];
 		rectangle_y2 = rectangle_y2_array[counter_mode];
@@ -270,10 +269,11 @@ void TIM3_IRQHandler(void)
 	HAL_ADC_Start(&hadc1);
 	HAL_ADC_PollForConversion(&hadc1, 10);
 	volume = (uint16_t) (HAL_ADC_GetValue(&hadc1) - 1700);
+
+// if you need to filter the signal
 //	adc_reg_value = (uint16_t) HAL_ADC_GetValue(&hadc1);
 //	MIC_median_filter = median_filter_update(&median_filter_MIC, adc_reg_value);
 //	volume = (MIC_median_filter - 1700);
-//
 	HAL_ADC_Stop(&hadc1);
   /* USER CODE END TIM3_IRQn 0 */
   HAL_TIM_IRQHandler(&htim3);

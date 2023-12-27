@@ -1,7 +1,7 @@
 /*
  * FlappyBird.h
  *
- *  Created on: 29 нояб. 2023 г.
+ *  Created on: 29.11.2023
  *      Author: Kirs
  */
 

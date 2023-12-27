@@ -27,9 +27,9 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  000200cc  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000ef8c  00000000  00000000  000200fc  2**0
+ 12 .debug_info   0000ef8b  00000000  00000000  000200fc  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 000028d4  00000000  00000000  0002f088  2**0
+ 13 .debug_abbrev 000028d4  00000000  00000000  0002f087  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  14 .debug_aranges 00000e40  00000000  00000000  00031960  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -2542,7 +2542,7 @@ int main(void)
  8001356:	2110      	movs	r1, #16
  8001358:	482d      	ldr	r0, [pc, #180]	; (8001410 <main+0x10c>)
  800135a:	f001 fcef 	bl	8002d3c <HAL_GPIO_WritePin>
-	char *pMyStr = "GAME OVER, Press Reset to continue";  //Строка на вывод
+	char *pMyStr = "GAME OVER, Press Reset to continue";  // string for input
  800135e:	4b2d      	ldr	r3, [pc, #180]	; (8001414 <main+0x110>)
  8001360:	607b      	str	r3, [r7, #4]
   while (1)
@@ -3061,12 +3061,12 @@ void draw_game(int8_t rectangle_x1, int8_t rectangle_x2, uint8_t rectangle_y1, u
  80016e0:	230f      	movs	r3, #15
  80016e2:	f7ff fa94 	bl	8000c0e <disp1color_DrawRectangle>
 
-	disp1color_UpdateFromBuff(); //Перевод рассчитанных данных в массив
+	disp1color_UpdateFromBuff(); // converting calculated data into an array
  80016e6:	f7ff f983 	bl	80009f0 <disp1color_UpdateFromBuff>
-	prepare_data(); //Разбиение массива на массивы под каждую строку
+	prepare_data(); // splitting the array into arrays for each row
  80016ea:	f7ff fcdf 	bl	80010ac <prepare_data>
 
-	//Включение матрицы (построчно)
+	// Switching-on the matrix, row by row
 	for (uint8_t i = 0; i < 20; i++) {
  80016ee:	2300      	movs	r3, #0
  80016f0:	73fb      	strb	r3, [r7, #15]
@@ -3175,19 +3175,19 @@ void game_over(char *pMyStr) {
  80017b6:	e025      	b.n	8001804 <game_over+0x6e>
 			x--) {
 
-		disp1color_printf(x, 4, FONTID_6X8M, pMyStr); //Расчет данных для вывода
+		disp1color_printf(x, 4, FONTID_6X8M, pMyStr); // calculation of data for output
  80017b8:	f9b7 000e 	ldrsh.w	r0, [r7, #14]
  80017bc:	687b      	ldr	r3, [r7, #4]
  80017be:	2200      	movs	r2, #0
  80017c0:	2104      	movs	r1, #4
  80017c2:	f7ff f91f 	bl	8000a04 <disp1color_printf>
 
-		disp1color_UpdateFromBuff(); //Перевод рассчитанных данных в массив
+		disp1color_UpdateFromBuff(); // converting calculated data into an array
  80017c6:	f7ff f913 	bl	80009f0 <disp1color_UpdateFromBuff>
-		prepare_data();//Разбиение массива на массивы под каждую строку
+		prepare_data();// splitting the array into arrays for each row
  80017ca:	f7ff fc6f 	bl	80010ac <prepare_data>
 
-		//Включение матрицы (построчно)
+		// Switching-on the matrix, row by row
 		for (uint8_t i = 0; i < 20; i++) {
  80017ce:	2300      	movs	r3, #0
  80017d0:	737b      	strb	r3, [r7, #13]
@@ -3230,8 +3230,6 @@ void game_over(char *pMyStr) {
  8001818:	dcce      	bgt.n	80017b8 <game_over+0x22>
 		}
 	}
-//	disp1color_DrawString(7, 0, FONTID_6X8M, pMyStr);
-//	disp1color_DrawString(5, 8, FONTID_6X8M, pMyStr2);
 }
  800181a:	bf00      	nop
  800181c:	bf00      	nop
@@ -3691,7 +3689,6 @@ void TIM1_UP_TIM10_IRQHandler(void)
  8001a00:	b580      	push	{r7, lr}
  8001a02:	af00      	add	r7, sp, #0
   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 0 */
-	//y0_bird = FlappyBird_update(&FlappyBird, volume);
 	if (counter_wall > 0 && counter_wall < 40) {
  8001a04:	4b28      	ldr	r3, [pc, #160]	; (8001aa8 <TIM1_UP_TIM10_IRQHandler+0xa8>)
  8001a06:	781b      	ldrb	r3, [r3, #0]
@@ -3865,10 +3862,11 @@ void TIM3_IRQHandler(void)
  8001b22:	b21a      	sxth	r2, r3
  8001b24:	4b05      	ldr	r3, [pc, #20]	; (8001b3c <TIM3_IRQHandler+0x3c>)
  8001b26:	801a      	strh	r2, [r3, #0]
+
+// if you need to filter the signal
 //	adc_reg_value = (uint16_t) HAL_ADC_GetValue(&hadc1);
 //	MIC_median_filter = median_filter_update(&median_filter_MIC, adc_reg_value);
 //	volume = (MIC_median_filter - 1700);
-//
 	HAL_ADC_Stop(&hadc1);
  8001b28:	4803      	ldr	r0, [pc, #12]	; (8001b38 <TIM3_IRQHandler+0x38>)
  8001b2a:	f000 fb77 	bl	800221c <HAL_ADC_Stop>
