@@ -3,7 +3,7 @@
 Отчёты доступны по ссылкам:
 
 
-1.
+1.https://drive.google.com/file/d/1JD5WK-MjZKzYMy6n3danJXpAqu4SHcua/view?usp=sharing
 
 # Лабораторная работа №1 - Знакомство с SPI
 # Задача
@@ -65,6 +65,6 @@ P10 Светодиодная панель или P10 Led Board представ�
 ![image](https://github.com/Kirsantiy/Embedded_systems_LABS/assets/133642673/2a0cf28f-6a69-46c8-83d8-cafe7b8adc28)
 ![image](https://github.com/Kirsantiy/Embedded_systems_LABS/assets/133642673/a2e9e5ae-ec00-46f7-b403-04bbaffb8263)
 
-
+Результат работы: https://drive.google.com/file/d/1ZdtxyG0yGU8SX9UHPGG57M0PBg6-hsJa/view?usp=sharing
 
 
